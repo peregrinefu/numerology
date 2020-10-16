@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Root</title>
+</head>
+<body style="background-color: #070707; color: azure; font-family: monospace">
+    <script>
+        function digrootNumInput() {
+            let val = document.getElementById("num").value;
+            
+            if (isNaN(val)) {
+                document.getElementById("output").innerHTML = "NULL";
+                return;
+            }
+            
+            digrootNum(val);
+        }
+        
+        function digrootNum(val) {
+            if (val > 0) {    
+                if (val % 9 == 0) {
+                    document.getElementById("output").innerHTML = 9;
+                    return;
+                } else {
+                    document.getElementById("output").innerHTML = val % 9;
+                    return;
+                }
+            }
+            document.getElementById("output").innerHTML = 0;
+            return;
+        }
+        
+        function strVal(str) {
+            let val = 0;
+            
+            switch (str.toLowerCase()) {
+                case "a":
+                case "j":
+                case "s":
+                    val = 1;
+                    break;
+                case "b":
+                case "k":
+                case "t":
+                    val = 2;
+                    break;
+                case "c":
+                case "l":
+                case "u":
+                    val = 3;
+                    break;
+                case "d":
+                case "m":
+                case "v":
+                    val = 4;
+                    break;
+                case "e":
+                case "n":
+                case "w":
+                    val = 5;
+                    break;
+                case "f":
+                case "o":
+                case "x":
+                    val = 6;
+                    break;
+                case "g":
+                case "p":
+                case "y":
+                    val = 7;
+                    break;
+                case "h":
+                case "q":
+                case "z":
+                    val = 8;
+                    break;
+                case "i":
+                case "r":
+                    val = 9;
+                    break;
+                default:
+                    val = 0;
+            }
+            
+            return val;
+        }
+        
+        function digrootText() {
+            let sum = 0;
+            let arr = document.getElementById("text").value.split("");
+            
+            for (let i = 0; i < arr.length; i++) {
+                sum += strVal(arr[i]);
+            }
+            
+            digrootNum(sum);
+        }
+    </script>
+    
+    <div>Numerical:</div>
+    <input type="text" id="num" name="num"><br>
+    <input type="button" onclick="digrootNumInput()" value="Submit"><br><br>
+    
+    <div>Text:</div>
+    <input type="text" id="text" name="text"><br>
+    <input type="button" onclick="digrootText()" value="Submit"><br><br>
+    
+    <div>Digital root is <a id="output">NULL</a></div>
+</body>
+</html>
